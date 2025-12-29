@@ -3,73 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SB</title>
+    <title>Stranger Things | The Upside Down</title>
     <style>
-        /* CSS: Styling everything inside this file */
-        body {
-            background-color: #e9ecef;
+        /* Base Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .profile-card {
-            background: #ffffff;
-            width: 320px;
-            padding: 30px;
-            text-align: center;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .profile-card h2 {
-            margin: 10px 0 5px;
-            color: #333;
-        }
-
-        .profile-card p {
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .links a {
-            display: block;
-            text-decoration: none;
-            background-color: #333;
+            font-family: 'Times New Roman', serif; /* Closest web-safe font to ITC Benguiat */
+            overflow: hidden;
             color: white;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 8px;
-            transition: transform 0.2s, background-color 0.2s;
         }
 
-        /* This makes the links react when you hover over them */
-        .links a:hover {
-            background-color: #555;
-            transform: translateY(-3px);
+        /* The "Ash" Particle Container */
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
+            z-index: -1;
+        }
+
+        /* Title Container */
+        .content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Signature Neon Title */
+        h1 {
+            color: #e30a17;
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 0.85;
+            letter-spacing: -5px;
+            /* Multi-layered glow */
+            text-shadow: 
+                0 0 5px #ff0000,
+                0 0 10px #ff0000,
+                0 0 20px #e30a17,
+                0 0 40px #7a0000;
+            animation: flicker 4s infinite alternate ease-in-out;
+            user-select: none;
+        }
+
+        h1 span {
+            display: block;
+            border-top: 4px solid #e30a17;
+            border-bottom: 4px solid #e30a17;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+
+        p {
+            font-family: sans-serif;
+            letter-spacing: 5px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            opacity: 0.8;
+            color: #ccc;
+            text-transform: uppercase;
+        }
+
+        /* Button Styling */
+        .btn {
+            margin-top: 40px;
+            padding: 12px 35px;
+            background: transparent;
+            border: 1px solid #e30a17;
+            color: #e30a17;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            transition: 0.4s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #e30a17;
+            color: #000;
+            box-shadow: 0 0 30px #e30a17;
+        }
+
+        /* Keyframes for the light flickering effect */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #e30a17;
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.5;
+            }
+        }
+
+        /* Simple CSS Ash Animation */
+        .ash {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <h2>Shehar Bano</h2>
-        <p>Web Developer & Designer</p>
-        
-        <div class="links">
-            <a href="#">My Portfolio</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Contact Me</a>
-        </div>
+    <div class="particles" id="ash-container"></div>
+
+    <div class="content">
+        <h1>STRANGER<span>THINGS</span></h1>
+        <p>Friends don't lie</p>
+        <a href="#" class="btn">ENTER THE UPSIDE DOWN</a>
     </div>
 
+    <script>
+        // Simple script to generate floating ash particles
+        const container = document.getElementById('ash-container');
+        for (let i = 0; i < 50; i++) {
+            const ash = document.createElement('div');
+            ash.className = 'ash';
+            const size = Math.random() * 3 + 'px';
+            ash.style.width = size;
+            ash.style.height = size;
+            ash.style.left = Math.random() * 100 + 'vw';
+            ash.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            ash.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(ash);
+        }
+    </script>
 </body>
 </html>
-
-
-
-
