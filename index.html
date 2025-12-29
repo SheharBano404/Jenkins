@@ -3,301 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRANGER THINGS 5 | THE FINAL SEASON</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:700&family=Oswald:wght@300;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <title>HTML and CSS Only</title>
     <style>
-        :root {
-            --red: #ff0000;
-            --glow: #ff4d4d;
-            --bg: #020202;
-            --panel: rgba(10, 10, 10, 0.95);
-            --font-main: 'Oswald', sans-serif;
-            --font-title: 'Libre Baskerville', serif;
-        }
-
-        .upside-down-mode {
-            --red: #7b2cbf;
-            --glow: #9d4edd;
-            --bg: #05010a;
-            --panel: rgba(15, 5, 25, 0.95);
-            filter: sepia(0.2) hue-rotate(240deg) brightness(0.7);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; cursor: crosshair; }
-
+        /* CSS: Styling everything inside this file */
         body {
-            background-color: var(--bg);
-            color: white;
-            font-family: var(--font-main);
-            overflow-x: hidden;
-            transition: background 2s ease;
-        }
-
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: black;
-            z-index: 10000;
+            background-color: #e9ecef;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .enter-btn {
-            background: transparent;
-            border: 2px solid var(--red);
-            color: var(--red);
-            padding: 18px 45px;
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            letter-spacing: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 20px var(--red);
-            animation: pulse-border 2s infinite alternate;
-        }
-
-        @keyframes pulse-border {
-            from { box-shadow: 0 0 10px var(--red); transform: scale(1); }
-            to { box-shadow: 0 0 30px var(--red); transform: scale(1.05); }
-        }
-
-        .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 999;
-            opacity: 0.3;
-        }
-
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 25px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
-        }
-
-        .nav-links a {
-            color: #888;
-            text-decoration: none;
-            margin-left: 30px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--glow); }
-
-        .hero {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, rgba(60,0,0,0.2) 0%, transparent 80%);
-            position: relative;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .st-line {
-            height: 5px;
-            background: var(--red);
-            box-shadow: 0 0 25px var(--red);
-            width: 100%;
-        }
-
-        h1 {
-            font-family: var(--font-title);
-            font-size: clamp(4rem, 18vw, 11rem);
-            text-transform: uppercase;
-            color: transparent;
-            -webkit-text-stroke: 1.5px var(--red);
-            letter-spacing: -8px;
-            line-height: 0.8;
-            filter: drop-shadow(0 0 20px var(--red));
-            animation: flicker-s5 6s infinite;
-        }
-
-        h1 span { display: block; padding-left: 60px; }
-
-        @keyframes flicker-s5 {
-            0%, 10%, 90%, 100% { opacity: 1; }
-            92%, 96% { opacity: 0.2; }
-            94% { opacity: 0.8; }
-        }
-
-        .section { padding: 100px 10%; position: relative; z-index: 2; }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-            margin-top: 50px;
-        }
-
-        .character-card {
-            background: var(--panel);
-            border-left: 4px solid var(--red);
-            padding: 40px;
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .character-card:hover {
-            transform: skewX(-2deg) scale(1.05);
-            background: rgba(30,0,0,0.3);
-            box-shadow: -10px 10px 0px var(--red);
-        }
-
-        .character-card h3 {
-            font-family: var(--font-title);
-            color: var(--red);
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .stats {
-            font-family: 'Special Elite', cursive;
-            color: #555;
-            margin-top: 25px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        footer {
-            padding: 120px 50px;
+        .profile-card {
+            background: #ffffff;
+            width: 320px;
+            padding: 30px;
             text-align: center;
-            background: linear-gradient(to top, #000, transparent);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .dev-tag {
-            font-size: 1.3rem;
-            letter-spacing: 15px;
-            text-transform: uppercase;
+        .profile-card h2 {
+            margin: 10px 0 5px;
             color: #333;
         }
 
-        .dev-tag b {
-            color: var(--red);
-            text-shadow: 0 0 15px var(--red);
-            animation: breathe 3s infinite alternate;
+        .profile-card p {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
-        @keyframes breathe {
-            from { opacity: 0.4; } to { opacity: 1; }
+        .links a {
+            display: block;
+            text-decoration: none;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            transition: transform 0.2s, background-color 0.2s;
         }
 
-        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        /* This makes the links react when you hover over them */
+        .links a:hover {
+            background-color: #555;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <h2 style="font-family: var(--font-title); color: #444; margin-bottom: 20px; letter-spacing: 5px;">THE BEGINNING OF THE END</h2>
-        <button class="enter-btn" onclick="initS5()">Enter Season 5</button>
+    <div class="profile-card">
+        <h2>Jane Doe</h2>
+        <p>Web Developer & Designer</p>
+        
+        <div class="links">
+            <a href="#">My Portfolio</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact Me</a>
+        </div>
     </div>
 
-    <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="scanlines"></div>
-    <div id="particles-js"></div>
-
-    <nav>
-        <div class="brand" style="font-family: var(--font-title); color: var(--red); font-size: 1.8rem;">V</div>
-        <div class="nav-links">
-            <a href="#characters">Survivors</a>
-            <a href="#about">The Right Side Up</a>
-            <button class="toggle-btn" onclick="toggleWorld()" style="background: transparent; border: 1px solid var(--red); color: var(--red); padding: 5px 15px; cursor: pointer;">CRAWL OUT</button>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div style="width: 80%; max-width: 1000px;">
-            <div class="st-line"></div>
-            <h1>Stranger<span>Things Season 5</span></h1>
-            <div class="st-line"></div>
-        </div>
-        <p style="margin-top: 40px; letter-spacing: 15px; font-weight: 300; color: #fff; opacity: 0.5;">ONE LAST RIDE • 2025</p>
-    </section>
-
-    <section class="section" id="characters">
-        <h2 style="font-family: var(--font-title); font-size: 4rem; color: var(--red);">The Final Stand</h2>
-        <div class="grid-container">
-            <div class="character-card">
-                <h3>EL / JANE : By Shehar</h3>
-                <p>The ultimate weapon. The only one capable of closing the mega-rift tearing Hawkins apart. The fight ends with her.</p>
-                <div class="stats">THREAT LEVEL: CRITICAL</div>
-            </div>
-            <div class="character-card">
-                <h3>WILL BYERS</h3>
-                <p>He felt it. He still feels him. The connection to Vecna is the key to the final victory or the ultimate downfall.</p>
-                <div class="stats">CONNECTION: 100% ACTIVE</div>
-            </div>
-            <div class="character-card">
-                <h3>VECNA / 001</h3>
-                <p>The Five O'Clock shadow. The master of the Upside Down. He isn't just coming—he is already here.</p>
-                <div class="stats">LOCATION: HAWKINS CENTER</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="about" style="border-top: 1px solid #111;">
-        <h2 style="font-family: var(--font-title); font-size: 3rem; color: var(--red); text-align: center; margin-bottom: 40px;">The Mega Rift</h2>
-        <p style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 2.2; color: #888; font-family: 'Special Elite'; font-size: 1.3rem;">
-            Hawkins has fallen. The barrier between our world and the Upside Down has collapsed. The sky is red, the spores are everywhere, and the final battle for existence has begun.
-        </p>
-    </section>
-
-    <footer>
-        <p class="dev-tag">Developed by <b>SheharBano404</b></p>
-        <p style="margin-top: 30px; font-size: 0.7rem; color: #222; letter-spacing: 4px;">EVERY STORY HAS AN END</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        function initS5() {
-            document.getElementById('bg-music').play();
-            document.getElementById('splash-screen').style.transform = 'translateY(-100%)';
-            setTimeout(() => {
-                document.getElementById('splash-screen').style.display = 'none';
-            }, 1500);
-        }
-
-        function toggleWorld() {
-            document.body.classList.toggle('upside-down-mode');
-        }
-
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 150 },
-                "color": { "value": "#ff0000" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.4, "random": true },
-                "size": { "value": 2, "random": true },
-                "move": {
-                    "enable": true,
-                    "speed": 1.5,
-                    "direction": "bottom",
-                    "random": true,
-                    "out_mode": "out"
-                }
-            }
-        });
-    </script>
 </body>
 </html>
-
-
-
-
-
