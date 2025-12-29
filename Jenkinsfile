@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKER_SERVER_IP = '18.140.200.242'
+    DOCKER_SERVER_IP = '13.61.173.47'
   }
 
   stages {
@@ -23,7 +23,7 @@ pipeline {
       steps {
         sshagent (credentials: ['docker-ssh']) {
           sh """
-            ssh -o StrictHostKeyChecking=no ubuntu@${DOCKER_SERVER_IP} << 'EOF'
+            ssh -o StrictHostKeyChecking=no ubuntu@$13.61.173.47 << 'EOF'
               # Clean old repo
               rm -rf Jenkins
               # Clone fresh code
